@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<view:BasePage
+    x:Class="MyStarterKit.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:view="clr-namespace:MyStarterKit.Views"
+    xmlns:vm="clr-namespace:MyStarterKit.ViewModels"
+    x:DataType="vm:MainViewModel">
+    <VerticalStackLayout>
+        <VerticalStackLayout
+            Padding="10"
+            mct:StateContainer.CurrentState="{Binding FullPageState}"
+            mct:StateContainer.ShouldAnimateOnStateChange="True"
+            Spacing="10">
+            <mct:StateContainer.StateViews>
+                <VerticalStackLayout mct:StateView.StateKey="Loading">
+                    <ActivityIndicator
+                        HorizontalOptions="Center"
+                        IsRunning="True"
+                        Color="Fuchsia" />
+                    <Label HorizontalOptions="Center" Text="I'm a state on the whole page!" />
+                    <Label HorizontalOptions="Center" Text="Toggle to go back." />
+                </VerticalStackLayout>
+            </mct:StateContainer.StateViews>
+
+            <Button Command="{Binding ShowToastCmd}" Text="Show Toast" />
+            <Button Command="{Binding ShowSnackBarCmd}" Text="Show SnackBar" />
+
+            <Button Command="{Binding ShowSnackBarCmd}" Text="Show SnackBar" />
+
+        </VerticalStackLayout>
+        <Button Command="{Binding ToggleStateCommand}" Text="Toggle State in Grid" />
+        <HorizontalStackLayout>
+            <Label Text="FullPageState : " />
+            <Label Text="{Binding FullPageState}" TextColor="White" />
+        </HorizontalStackLayout>
+
+    </VerticalStackLayout>
+
+</view:BasePage>

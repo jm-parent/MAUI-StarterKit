@@ -1,0 +1,13 @@
+﻿global using CommunityToolkit.Maui;
+global using MyStarterKit.Models;
+global using MyStarterKit.Services;
+global using CommunityToolkit.Mvvm.ComponentModel;
+global using CommunityToolkit.Mvvm.Input;
+global using MyStarterKit.ViewModels;
+global using MyStarterKit.Views;
+global using System.Collections.ObjectModel;
+global using System.ComponentModel;
+global using System.Diagnostics;
+global using System.Globalization;
+global using System.Runtime.CompilerServices;
+global using System.Text.Json;
