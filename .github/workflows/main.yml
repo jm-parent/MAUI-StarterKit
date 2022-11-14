@@ -46,7 +46,7 @@ jobs:
       - name: Upload Android Artifact
         uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8
         with:
-          name: mauibeach-android-ci-build
+          name: mauiStarterKit-android-ci-build
           path: MAUI-StarterKit/MyStarterKit/bin/Release/net6.0-android/*Signed.a*
 
 # MAUI Windows Build
@@ -67,15 +67,15 @@ jobs:
         run: dotnet workload install maui --ignore-failed-sources
 
       - name: Restore Dependencies
-        run: dotnet restore MAUI-StarterKit/MyStarterKit/MauiBeach.csproj
+        run: dotnet restore MAUI-StarterKit/MyStarterKit/MyStarterKit.csproj
 
       - name: Build MAUI Windows
-        run: dotnet publish MAUI-StarterKit/MyStarterKit/MauiBeach.csproj -c Release -f net7.0-windows10.0.19041.0 --no-restore
+        run: dotnet publish MAUI-StarterKit/MyStarterKit/MyStarterKit.csproj -c Release -f net7.0-windows10.0.19041.0 --no-restore
 
       - name: Upload Windows Artifact
         uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8
         with:
-          name: mauibeach-windows-ci-build
+          name: MyStarterKit-windows-ci-build
           path: MAUI-StarterKit/MyStarterKit/bin/Release/net7.0-windows10.0.19041.0/win10-x64/AppPackages/MyStarterKit*/MyStarterKit*.msix
 
 # MAUI iOS Build
@@ -96,16 +96,16 @@ jobs:
         run: dotnet workload install maui --ignore-failed-sources
 
       - name: Restore Dependencies
-        run: dotnet restore MAUI-StarterKit/MyStarterKit/MauiBeach.csproj
+        run: dotnet restore MAUI-StarterKit/MyStarterKit/MyStarterKit.csproj
 
       - name: Build MAUI iOS
-        run: dotnet build MAUI-StarterKit/MyStarterKit/MauiBeach.csproj -c Release -f net7.0-ios --no-restore /p:buildForSimulator=True /p:packageApp=True /p:ArchiveOnBuild=False
+        run: dotnet build MAUI-StarterKit/MyStarterKit/MyStarterKit.csproj -c Release -f net7.0-ios --no-restore /p:buildForSimulator=True /p:packageApp=True /p:ArchiveOnBuild=False
 
       - name: Upload iOS Artifact
         uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8
         with:
-          name: mauibeach-ios-ci-build
-          path: src/MauiBeach/bin/Release/net7.0-ios/iossimulator-x64/**/*.app
+          name: MyStarterKit-ios-ci-build
+          path: MAUI-StarterKit/MyStarterKit/bin/Release/net7.0-ios/iossimulator-x64/**/*.app
 
 # MAUI MacCatalyst Build
   build-mac:
@@ -125,13 +125,13 @@ jobs:
         run: dotnet workload install maui --ignore-failed-sources
 
       - name: Restore Dependencies
-        run: dotnet restore MAUI-StarterKit/MyStarterKit/MauiBeach.csproj
+        run: dotnet restore MAUI-StarterKit/MyStarterKit/MyStarterKit.csproj
 
       - name: Build MAUI MacCatalyst
-        run: dotnet publish MAUI-StarterKit/MyStarterKit/MauiBeach.csproj -c Release -f net7.0-maccatalyst --no-restore -p:BuildIpa=True
+        run: dotnet publish MAUI-StarterKit/MyStarterKit/MyStarterKit.csproj -c Release -f net7.0-maccatalyst --no-restore -p:BuildIpa=True
 
       - name: Upload MacCatalyst Artifact
         uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8
         with:
-          name: mauibeach-macos-ci-build
+          name: MyStarterKit-macos-ci-build
           path: MAUI-StarterKit/MyStarterKit/bin/Release/net7.0-maccatalyst/maccatalyst-x64/publish/*.pkg
